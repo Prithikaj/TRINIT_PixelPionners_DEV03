@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View Public Test</title>
+</head>
+<body>
+    <h1>Test {{ test_id }} by {{ test_info.created_by }}</h1>
+    <p>Created at: {{ test_info.created_at }}</p>
+    <h2>Questions:</h2>
+    <ul>
+        {% for question in test_info.questions %}
+            <li>{{ question }}</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

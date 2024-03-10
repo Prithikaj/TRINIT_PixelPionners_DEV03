@@ -1,0 +1,25 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Dashboard</title>
+</head>
+<body>
+    <h2>Welcome, {{ username }}!</h2>
+    <h3>Your Friends:</h3>
+    <ul>
+        {% for friend in friends %}
+            <li>{{ friend }}</li>
+        {% endfor %}
+    </ul>
+    <h3>Add Friend:</h3>
+    <form action="/add_friend" method="post">
+        <input type="hidden" name="username" value="{{ username }}">
+        <label for="friend_username">Friend's Username:</label><br>
+        <input type="text" id="friend_username" name="friend_username" required><br><br>
+        <input type="submit" value="Add Friend">
+    </form>
+</body>
+</html>

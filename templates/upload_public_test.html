@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upload Public Test</title>
+</head>
+<body>
+    <h1>Upload Public Test</h1>
+    <form action="{{ url_for('add_public_test') }}" method="post">
+        <label for="username">Your Username:</label>
+        <input type="text" name="username" required>
+        <label for="questions">Test Questions (one per line):</label>
+        <textarea name="questions" rows="4" cols="50" required></textarea>
+        <button type="submit">Create Public Test</button>
+    </form>
+</body>
+</html>

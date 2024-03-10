@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Question Papers</title>
+</head>
+<body>
+    <h1>Question Papers</h1>
+    <ul>
+        {% for paper in question_papers %}
+        <li>
+            <h2>Question Paper</h2>
+            <p>{{ paper.text }}</p>
+            <h3>Answer Key</h3>
+            <ul>
+                {% for question, answer in paper.answer_key.items() %}
+                <li>{{ question }}: {{ answer }}</li>
+                {% endfor %}
+            </ul>
+        </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

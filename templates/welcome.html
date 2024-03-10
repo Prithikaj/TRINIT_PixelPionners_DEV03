@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Welcome to Online Exam Platform</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: black;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+    }
+
+    .container {
+        max-width: 600px;
+        padding: 40px;
+        background-color: white; /* Bright yellow background */
+        border-radius: 8px;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+        animation: emerge 1s ease-out;
+        position: relative;
+    }
+
+    .paper1, .paper2 {
+        position: absolute;
+        width: 120px;
+        height: 120px;
+        background-color: yellow;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        transform: rotate(-10deg);
+    }
+
+    .paper1 {
+        top: -30px;
+        left: -50px;
+    }
+
+    .paper2 {
+        bottom: -30px;
+        right: -50px;
+    }
+
+    h1 {
+        color: #333;
+        font-size: 2.5em;
+        margin-bottom: 30px;
+        text-align: center;
+        animation: fadeIn 1s forwards;
+        opacity: 0;
+    }
+
+    a {
+        display: inline-block;
+        margin: 10px;
+        padding: 15px 30px;
+        text-decoration: none;
+        color: black;
+        background-color: yellow;
+        border-radius: 5px;
+        transition: background-color 0.3s;
+    }
+
+    a:hover {
+        background-color: yellow;
+    }
+
+    @keyframes emerge {
+        0% {
+            transform: scale(0);
+        }
+        100% {
+            transform: scale(1);
+        }
+    }
+
+    @keyframes fadeIn {
+        0% {
+            opacity: 0;
+        }
+        100% {
+            opacity: 1;
+        }
+    }
+</style>
+</head>
+<body>
+    <div class="container">
+        <div class="paper1"></div>
+        <div class="paper2"></div>
+        <h1>Welcome to the Test Formator!</h1>
+        <a href="/login">Login</a>
+        <a href="/register">Register</a>
+    </div>
+</body>
+</html>

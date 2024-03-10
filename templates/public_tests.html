@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Public Tests</title>
+</head>
+<body>
+    <h1>Public Tests</h1>
+    <ul>
+        {% for test_id, test_info in public_tests.items() %}
+            <li><a href="{{ url_for('view_public_test', test_id=test_id) }}">Test {{ test_id }} by {{ test_info.created_by }}</a></li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

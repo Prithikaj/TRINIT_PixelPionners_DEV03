@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Mock Test</title>
+    <style>
+        body {
+            background-color: #000;
+            color: #FFD700;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        h1 {
+            text-align: center;
+        }
+        #timer {
+            font-size: 24px;
+            font-weight: bold;
+        }
+        form {
+            margin: 0 auto;
+            width: 80%;
+            max-width: 600px;
+            padding: 20px;
+            background-color: #000;
+            border: 2px solid #FFD700;
+            border-radius: 10px;
+        }
+        h3 {
+            color: #FFD700;
+        }
+        p {
+            margin-bottom: 10px;
+        }
+        textarea {
+            width: 100%;
+            padding: 10px;
+            border: 2px solid #FFD700;
+            border-radius: 5px;
+            background-color: #000;
+            color: #FFD700;
+        }
+        input[type="submit"] {
+            background-color: #FFD700;
+            color: #000;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: bold;
+        }
+        input[type="submit"]:hover {
+            background-color: #FFA500;
+        }
+    </style>
+</head>
+<body>
+    <h1>Mock Test</h1>
+    <p style="text-align: center;">Time remaining: <span id="timer"></span></p>
+    <form id="submitForm" method="post" action="{{ url_for('submit_mock_test') }}">
+        <input type="hidden" name="mock_test_id" value="{{ mock_test_id }}">
+        <input type="hidden" name="start_time" value="{{ start_time }}">
+        {% for question in questions %}
+            <h3>Question {{ loop.index }}</h3>
+            <p>{{ question }}?</p>
+            <textarea name="question_{{ loop.index }}" rows="4" cols="50"></textarea>
+            <br><br>
+        {% endfor %}
+        <div style="text-align: center;">
+            <input type="submit" value="Submit">
+        </div>
+    </form>
+
+    <script>
+        var timer;
+        var timeLeft = 60 * 60; // 1 hour in seconds
+
+        function startTimer() {
+            timer = setInterval(function() {
+                timeLeft--;
+                if (timeLeft <= 0) {
+                    clearInterval(timer);
+                    alert("Time's up! Your test will be submitted.");
+                    document.getElementById('submitForm').submit();
+                }
+                var hours = Math.floor(timeLeft / 3600);
+                var minutes = Math.floor((timeLeft % 3600) / 60);
+                var seconds = timeLeft % 60;
+                document.getElementById('timer').innerText = hours + ":" + minutes + ":" + seconds;
+            }, 1000);
+        }
+
+        function stopTimer() {
+            clearInterval(timer);
+        }
+
+        window.onload = startTimer;
+
+        document.getElementById('submitForm').addEventListener('submit', function() {
+            stopTimer();
+        });
+    </script>
+</body>
+</html>

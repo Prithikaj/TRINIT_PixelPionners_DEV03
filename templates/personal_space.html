@@ -1,0 +1,20 @@
+# Update the personal_space.html template to include forms for adding friends and creating groups
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>Welcome to your personal space, {{ session.username }}!</h1>
+    <h2>Your Friends:</h2>
+    <ul>
+        {% for friend in friends %}
+            <li>{{ friend }}</li>
+        {% endfor %}
+    </ul>
+    <form action="{{ url_for('add_friend') }}" method="post">
+        <input type="text" name="friend_username" placeholder="Friend's username">
+        <button type="submit">Add Friend</button>
+    </form>
+    <form action="{{ url_for('create_group') }}" method="post">
+        <input type="text" name="group_name" placeholder="Group name">
+        <button type="submit">Create Group</button>
+    </form>
+{% endblock %}
